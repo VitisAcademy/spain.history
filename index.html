@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <title>История Испании</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/crossword.css">
+  <link rel="stylesheet" href="css/listok.css">
+  <link rel="stylesheet" href="css/scribe.css">
+  <script src="js/draggabilly.pkgd.min.js"></script>
+  <script src="js/db.js"></script>
+</head>
+<body>
+<div class="ave">
+  <div class="ave__title">Введите email</div>
+  <input type="email" maxlength="40" autocomplete="off" onkeyup="checkValidate(this)" autofocus class="ave__input">
+  <div class="ave__button button" onclick="logIn()">Продолжить</div>
+</div>
+<div class="header">
+  <div class="header__menu" onclick="toggleHamburger()"></div>
+  <div class="header__title">Кроссворд</div>
+</div>
+<div class="main">
+  <div class="task">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Ответьте на вопросы. Впишите решение в соответствующие ячейки.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page crossword left">
+      <div class="cross__question"></div>
+      <div class="cross__word">
+        <div class="word1 horizon">
+          <input placeholder="1" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="1to3" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to3').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="1to9" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('3to5').value = this.value" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word2 vertical">
+          <input id="2to1" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('4to1').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="2to3" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('1to3').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="2to6" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('5to7').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="2to8" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('6to2').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word4 horizon">
+          <input id="4to1" placeholder="24" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to1').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word5 horizon">
+          <input placeholder="5" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="5to7" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to6').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word6 horizon">
+          <input placeholder="6" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="6to2" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to8').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word7 horizon">
+          <input placeholder="7" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="7to4" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('3to1').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word3 vertical">
+          <input id="3to1" placeholder="3" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('7to4').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="3to5" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('1to9').value = this.value" onclick="this.select()" class="cross__input">
+        </div>
+      </div>
+      <div class="cross__button button" onclick="scoreButton(0);crossCheckWord()">Нажмите для завершения!</div>
+    </div>
+  </div>
+
+  <div class="task hidden">
+    <div class="lock hidden"></div>
+    <div class="info" style="z-index: 2">
+      <div class="info__title">Расставить в правильном порядке народы, которые проживали на территории современной Испании и влияли на виноделие. Перетащите элементы для смещения позиции.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page listok left">
+      <div class="listok__list1">
+        <div class="listok__tab"></div>
+        <div class="listok__button button" onclick="scoreButton(1);listokCheck1()">Нажмите для завершения!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task hidden">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Помогите журналисту написать статью. Для этого заполните пробелы в предложениях.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page scribe left">
+      <div class="scribe__title">
+        В середине 19 века в
+        <input type="text" maxlength="5" autocomplete="off" class="scribe__input" style='width: calc(83px + 9 * ((100vw - 320px) / 880))'>
+        , регионе на севере Испании, соседнем со Страной Басков и Наваррой, начало формироваться ядро качественного испанского виноделия.<br>В 1850 г. герцог Лучиано де
+        <input type="text" maxlength="8" autocomplete="off" class="scribe__input" style='width: calc(132px + 16 * ((100vw - 320px) / 880))'>
+        сделал в
+        <input type="text" maxlength="5" autocomplete="off" class="scribe__input" style='width: calc(83px + 9 * ((100vw - 320px) / 880))'>
+        первое вино, выдержанное во французских
+        <input type="text" maxlength="8" autocomplete="off" class="scribe__input" style='width: calc(132px + 16 * ((100vw - 320px) / 880))'>.
+        <br>До этого испанские деревенские вина часто выдерживали в
+        <input type="text" maxlength="7" autocomplete="off" class="scribe__input" style='width: calc(116px + 13 * ((100vw - 320px) / 880))'>
+        бурдюках.<br>Герцог де
+        <input type="text" maxlength="8" autocomplete="off" class="scribe__input" style='width: calc(132px + 16 * ((100vw - 320px) / 880))'>
+        обучался винному делу, конечно же, в
+        <input type="text" maxlength="5" autocomplete="off" class="scribe__input" style='width: calc(83px + 9 * ((100vw - 320px) / 880))'>.
+        <br>И по возвращении использовал концепцию французского
+        <input type="text" maxlength="4" autocomplete="off" class="scribe__input" style='width: calc(66px + 8 * ((100vw - 320px) / 880))'>
+        в своем поместье Игай, которое сегодня является символом ведущей винодельни Marquеs de Murrieta.
+      </div>
+      <div class=" button" onclick="scoreButton(2);scribeCheck()">Нажмите для завершения!</div>
+    </div>
+  </div>
+
+  <div class="task hidden">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Прочитайте внимательно вопрос. Дайте развёрнутый ответ в комментариях к уроку.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page asked left">
+      <div class="asked__title"></div>
+      <div class=" button" onclick="endButton()">Дать ответ!</div>
+    </div>
+  </div>
+</div>
+<div class="footer"></div>
+<div class="menu menu__off">
+  <div class="menu__content"></div>
+</div>
+<script src="js/crossword.js"></script>
+<script src="js/scribe.js"></script>
+<script src="js/listok.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
